@@ -5,6 +5,7 @@ yum update -y
 useradd devops
 echo devops | passwd --stdin devops
 echo 'devops ALL=(ALL) NOPASSWD: ALL' | tee -a /etc/sudoers
+# echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | tee -a /etc/sudoers
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 systemctl stop sshd
 systemctl start sshd
@@ -22,4 +23,3 @@ systemctl daemon-reload
 systemctl enable jenkins
 systemctl start jenkins
 systemctl status jenkins
-
